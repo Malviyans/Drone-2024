@@ -1,0 +1,445 @@
+body {
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+    color: #fff;
+    padding:0;
+    margin:0;
+    box-size:border-bos;
+}
+.navbar {
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Navbar link styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    transition: background-color 0.1s ease; /* Smooth transition for background color */
+    position: relative; /* Ensure relative positioning */
+    z-index: 10; /* Ensure it's above other content */
+}
+
+/* Sticky Class for Navbar */
+.sticky {
+    background-color: #1e2130; /* Background color for sticky state */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Small shadow for better visibility */
+}
+
+
+/* Default navbar link styles */
+/* Default navbar link styles */
+.navbar-nav .nav-item .nav-link {
+    padding: 10px 20px; /* Add padding for better clickability */
+    font-size: 22px; /* Maintain font size */
+    color: white; /* White text color by default */
+    background-color: transparent; /* Transparent background */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: gray; /* White background on hover */
+    color: #1e2130; /* Dark text color on hover */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Active link effect */
+.navbar-nav .nav-item .nav-link.active {
+    background-color: white; /* White background when active */
+    color: black !important; /* Pure black text color when active */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.navbar-logo {
+    width: 150px;
+    height: 150px;
+    max-width: 150px; 
+    max-height: 150px;
+    padding-left: 10px;
+    padding-top: 10px;
+    object-fit: contain;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        font-size: 15px;
+    } 
+
+    .navbar-collapse {
+        position: fixed;
+        top: 10px;
+          width: 100px; 
+        height: 100vh; 
+        background-color: rgba(0, 0, 0, 0.8); 
+        /* padding-top: 20px; */
+        z-index: 1000; /
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        top: 10px;
+        right: 10px; 
+        z-index: 1001; 
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .navbar-logo {
+        width: 130px;
+        height: 130px;
+        max-width: 130px;
+        max-height: 130px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .navbar-logo {
+        width: 120px;
+        height: 120px;
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+}
+
+
+@media (max-width: 768px) {
+    .navbar-logo {
+        width: 100px;
+        height: 100px;
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .navbar-logo {
+        width: 80px;
+        height: 80px;
+        max-width: 80px;
+        max-height: 80px;
+    }
+}
+
+/* teams section */
+
+.team-section {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.team-section h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 3vw; 
+}
+
+.team-section p {
+    margin-bottom: 40px;
+    color: #b3b3b3;
+    font-size: 3vw; 
+}
+
+
+.team-card {
+    background-color: #1e2130;
+    border: none;
+    padding: 2vw;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1; 
+    max-width: 100%; 
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.team-card img {
+    border-radius: 50%;
+    width: 10vw; 
+    height: 10vw; 
+    object-fit: cover;
+    margin-bottom: 2vw;
+}
+.founder {
+    border-radius: 50%;
+    width: 15vw; 
+    height: 15vw; 
+    object-fit: cover;
+    margin-bottom: 2vw;
+}
+.team-card h5 {
+    font-size: 2vw; 
+    font-weight: bold;
+}
+
+.team-card p {
+    color: #b3b3b3;
+    margin-bottom: 1.5vw;
+    font-size: 1.3vw; 
+}
+
+/* Social icons section */
+.social-icons {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1vw;
+    opacity: 1;
+}
+
+
+.social-icons a {
+    color: #fff;
+    font-size: 2vw;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .team-card img {
+        width: 12vw;
+        height: 12vw;
+    }
+
+    .team-card h5 {
+        font-size: 2.5vw;
+    }
+
+    .team-card p {
+        font-size: 2.5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-card {
+        padding: 3vw;
+    }
+
+    .team-card img {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .team-card h5 {
+        font-size: 3vw;
+    }
+
+    .team-card p {
+        font-size: 2.5vw;
+    }
+
+    .social-icons a {
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .team-card img {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    .team-card h5 {
+        font-size: 4vw;
+    }
+
+    .team-card p {
+        font-size: 2.5vw;
+    }
+
+    .social-icons a {
+        font-size: 4vw;
+    }
+    .prime{
+        max-width:30%;
+        margin: 0 auto;
+    }
+}
+.team-card1 img {
+    width: 100%; /* Make image responsive */
+    border-bottom: 2px solid #ddd; /* Optional border below the image */
+}
+
+//* Carousel container */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Carousel inner content */
+.carousel {
+    display: flex;
+    animation: scroll 30s linear infinite;
+}
+
+.carousel img {
+    width: 100vw;
+    height: 30vh;
+    object-fit: cover;
+    margin-right: 20px; /* Add gap between images */
+}
+
+/* Continuous scrolling animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-300%);
+    }
+}
+@media (max-width: 600px) {
+    .carousel img {
+        height: 20vh; /* Adjust the height for smaller screens */
+    }
+}
+
+  
+/* Footer section styling */
+.footer-section {
+    background-color: #1e2130;
+    padding: 40px 0;
+    color: white;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+}
+
+.footer-links li {
+    margin: 0 10px;
+}
+
+.footer-links li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.footer-links li a:hover {
+    color: #007bff;
+}
+
+/* Social icons styling */
+.footer-section a {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #007bff;
+}
+
+/* Move to top button */
+.move-to-top {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.move-to-top i {
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+.move-to-top:hover {
+    color: #007bff;
+}
+
+.footer-section p {
+    font-size: 1rem;
+    color: #b3b3b3;
+    margin: 0;
+}
+
+/* Media query for responsiveness on smaller screens */
+@media (max-width: 768px) {
+    .footer-section {
+        padding: 30px 0;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center; /* Center align on small screens */
+    }
+
+    .footer-links li {
+        margin: 5px 0; /* Reduce margin between links */
+    }
+
+    .footer-links li a {
+        font-size: 1rem; /* Decrease font size */
+    }
+
+    .footer-section a {
+        font-size: 1.5rem; /* Decrease social icons size */
+        margin: 0 8px;
+    }
+
+    .move-to-top {
+        font-size: 1rem; /* Decrease move-to-top button size */
+    }
+
+    .move-to-top i {
+        font-size: 1.2rem;
+    }
+
+    .footer-section p {
+        font-size: 0.9rem; /* Decrease paragraph text size */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-section {
+        padding: 20px 0;
+    }
+
+    .footer-links li a {
+        font-size: 0.9rem; /* Further decrease font size for very small screens */
+    }
+
+    .footer-section a {
+        font-size: 1.2rem; /* Reduce size of icons further */
+    }
+
+    .move-to-top {
+        font-size: 0.9rem; /* Further decrease button size */
+    }
+
+    .move-to-top i {
+        font-size: 1rem;
+    }
+
+    .footer-section p {
+        font-size: 0.8rem; /* Decrease paragraph text size even more */
+    }
+}
