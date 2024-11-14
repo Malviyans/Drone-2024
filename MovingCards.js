@@ -1,45 +1,64 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const carousel = document.querySelector('.carousel');
-    const images = document.querySelectorAll('.carousel img');
-    const nextButton = document.getElementById('next');
-    const prevButton = document.getElementById('prev');
+let direction = 1; 
+let position = 0;
+let isPaused = false; 
+const cardWidth = 160;
 
-    let scrollPosition = 0;
-    let totalWidth = 0;
+function autoSlide() {
+  if (!isPaused) { 
+    const cardsContainer = document.querySelector('.cards');
+    const containerWidth = document.querySelector('.card-container').offsetWidth;
+    const cardsWidth = cardsContainer.scrollWidth;
+
+   
+    const maxPosition = cardsWidth - containerWidth;
+
     
-    // Calculate the total width of all images (image width + margin)
-    images.forEach(img => {
-        totalWidth += img.clientWidth + 20; // Add margin between images
-    });
+    position += direction * 1; 
 
-    const imageWidth = images[0].clientWidth + 20; // Image width + margin
     
-    // Adjust animation duration based on the total width of images
-    const animationDuration = totalWidth / 100; // Adjust this to fine-tune speed
-    carousel.style.animationDuration = `${animationDuration}s`;
+    if (position <= 0 || position >= maxPosition) {
+      direction *= -1;
+    }
 
-    // Function to handle the next slide
-    nextButton.addEventListener('click', () => {
-        const maxScroll = totalWidth - carousel.clientWidth;
-        if (scrollPosition < maxScroll) {
-            scrollPosition += imageWidth;
-            carousel.style.transform = `translateX(-${scrollPosition}px)`;
-            carousel.style.transition = 'transform 0.5s ease'; // Smooth transition
-        }
-    });
+   
+    cardsContainer.style.transform = `translateX(-${position}px)`;
+  }
 
-    // Function to handle the previous slide
-    prevButton.addEventListener('click', () => {
-        if (scrollPosition > 0) {
-            scrollPosition -= imageWidth;
-            carousel.style.transform = `translateX(-${scrollPosition}px)`;
-            carousel.style.transition = 'transform 0.5s ease'; // Smooth transition
-        }
-    });
+  
+  requestAnimationFrame(autoSlide);
+}
 
-    // Reset the scroll position when the animation completes
-    carousel.addEventListener('animationiteration', () => {
-        carousel.style.transform = 'translateX(0)'; // Restart from the beginning
-        scrollPosition = 0;
-    });
+
+autoSlide();
+
+
+const cardContainer = document.querySelector('.card-container');
+cardContainer.addEventListener('mouseenter', () => {
+  isPaused = true; 
+});
+cardContainer.addEventListener('mouseleave', () => {
+  isPaused = false; 
+});
+
+
+function moveCards(offset) {
+  const cardsContainer = document.querySelector('.cards');
+  position += offset; 
+  const maxPosition = cardsContainer.scrollWidth - cardContainer.offsetWidth;
+
+  
+  if (position < 0) position = 0;
+  if (position > maxPosition) position = maxPosition;
+
+ 
+  cardsContainer.style.transform = `translateX(-${position}px)`;
+}
+
+
+document.querySelector('.left-arrow').addEventListener('click', () => {
+  moveCards(-cardWidth); 
+});
+
+document.querySelector('.right-arrow').addEventListener('click', () => {
+  moveCards(cardWidth); 
 });
