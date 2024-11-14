@@ -35,6 +35,35 @@ autoSlide();
 const cardContainer = document.querySelector('.card-container');
 cardContainer.addEventListener('mouseenter', () => {
   isPaused = true; 
+<<<<<<< HEAD
+=======
+});
+cardContainer.addEventListener('mouseleave', () => {
+  isPaused = false; 
+});
+
+
+function moveCards(offset) {
+  const cardsContainer = document.querySelector('.cards');
+  position += offset; 
+  const maxPosition = cardsContainer.scrollWidth - cardContainer.offsetWidth;
+
+  
+  if (position < 0) position = 0;
+  if (position > maxPosition) position = maxPosition;
+
+ 
+  cardsContainer.style.transform = `translateX(-${position}px)`;
+}
+
+
+document.querySelector('.left-arrow').addEventListener('click', () => {
+  moveCards(-cardWidth); 
+});
+
+document.querySelector('.right-arrow').addEventListener('click', () => {
+  moveCards(cardWidth); 
+>>>>>>> 5600fc0502e1ca144b64fa567092482c64d59a6f
 });
 cardContainer.addEventListener('mouseleave', () => {
   isPaused = false; 
