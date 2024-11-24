@@ -209,7 +209,7 @@ p {
 }
 
 .details__bg--down {
-  background: #030921;
+  background: #000e23;
 }
 
 .details__bg {
@@ -524,4 +524,79 @@ p:last-child {
     top: 10em;
   }
 }
+
+
+/* Swiftwings Container */
+.swiftwings-container {
+  text-align: center;
+  margin: 1rem auto;
+  position: relative;
+  
+}
+
+
+
+
+
+/* jfhf */
+
+/* Add breathing animation to glowing text */
+@keyframes breathe {
+  0%, 100% {
+      text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff, 0 0 30px #0078ff, 0 0 40px #0078ff;
+  }
+  50% {
+      text-shadow: 0 0 20px #00ffff, 0 0 40px #00d9ff, 0 0 60px #0078ff, 0 0 80px #0078ff;
+  }
+}
+
+/* Glowing Text with Breathing Effect */
+/* .glowing-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00d9ff;
+  text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff, 0 0 30px #0078ff, 0 0 40px #0078ff;
+  cursor: pointer;
+  animation: breathe 3s infinite ease-in-out; /* Add animation */
+  transition: transform 0.3s ease;
+} */
+
+.glowing-text:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 30px #00ffff, 0 0 60px #00d9ff, 0 0 90px #0078ff, 0 0 120px #0078ff;
+}
+
+
+
+/* new sparkle */
+
+@keyframes rotating-glow {
+  0% {
+      text-shadow: 0 0 10px #00d9ff, 0 0 20px #b6ccff, 0 0 30px #0078ff, 0 0 40px #0078ff;
+  }
+  25% {
+      text-shadow: 0 0 10px #0078ff, 0 0 20px #ffffff, 0 0 30px #00d9ff, 0 0 40px #ffffff;
+  }
+  50% {
+      text-shadow: 0 0 10px #ddfffd, 0 0 20px #00d9ff, 0 0 30px #0078ff, 0 0 40px #0078ff;
+  }
+  75% {
+      text-shadow: 0 0 10px #0078ff, 0 0 20px #0088ff, 0 0 30px #fcfffe, 0 0 40px #30c1ff;
+  }
+  100% {
+      text-shadow: 0 0 10px #00d9ff, 0 0 20px #004560, 0 0 30px #0078ff, 0 0 40px #0078ff;
+  }
+}
+
+.glowing-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00d9ff;
+  text-shadow: 0 0 10px #00d9ff, 0 0 20px #00ffcc, 0 0 30px #0078ff, 0 0 40px #0078ff;
+  animation: rotating-glow 5s infinite linear;
+  cursor: pointer;
+}
+
+
+
 
