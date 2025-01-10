@@ -45,7 +45,7 @@ https://www.tooplate.com/view/2097-pop
     </div>
 
     <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-navbar">
+    <nav id="content" class="navbar navbar-expand-lg navbar-dark sticky-navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="assets/images/iot.png" alt="Logo" class="navbar-logo">
@@ -220,20 +220,23 @@ https://www.tooplate.com/view/2097-pop
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <form action="index.html" method="post" class="contact-form">
+
+                                                        <form action="#" method="post" class="contact-form" id="contact-form">
                                                             <div class="row">
                                                                 <div class="form-group col-md-6 col-lg-6 col-xl-6">
-                                                                  <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"  required/>
+                                                                  <input type="text" id="contact-name" name="contact-name" class="form-control" placeholder="Name"  required/>
                                                                 </div>
                                                                 <div class="form-group col-md-6 col-lg-6 col-xl-6 tm-col-email">
-                                                                  <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email"  required/>
+                                                                  <input type="email" id="contact-email" name="contact-email" class="form-control" placeholder="Email"  required/>
                                                                 </div>
                                                             </div>                                                        
                                                             <div class="form-group">
-                                                              <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
+                                                              <textarea id="contact-message" name="contact-message" class="form-control" rows="9" placeholder="Message" required></textarea>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary tm-btn-submit">Submit</button>
                                                         </form>
+
+                                                        
                                                     </div>
                                                 </div>
                                             </div>                                            
@@ -286,6 +289,7 @@ https://www.tooplate.com/view/2097-pop
 </div>
 
     <!-- load JS -->
+    
     <script src="events_js/jquery-3.2.1.slim.min.js"></script>         <!-- https://jquery.com/ -->    
     <script src="slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->  
     <script src="events_js/anime.min.js"></script>                     <!-- http://animejs.com/ -->
@@ -318,7 +322,10 @@ https://www.tooplate.com/view/2097-pop
             $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright           
         });
 
-    </script>             
+    </script>  
+    
+    <script src="cf.js" ></script>  
+         
 
 </body>
 </html>
