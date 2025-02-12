@@ -90,33 +90,47 @@ import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
-// Set up the scene
+// Scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 2, 10); // Move camera closer and a bit higher
 
-// Get the container for the renderer
-const container3D1 = document.getElementById("container3D");
+// Get container
+const container3D1 = document.getElementById("container3D1");
+
+// Ensure container exists
+if (!container3D1) {
+    console.error("Container #container3D1 not found.");
+}
+
+// Create renderer
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+container3D1.appendChild(renderer.domElement);
+
+// Function to update renderer size
+function updateRendererSize() {
+    const width = container3D1.clientWidth;
+    const height = container3D1.clientHeight;
+
+    if (width > 0 && height > 0) {
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    }
+}
 
 // Ensure container is visible before setting size
 const checkContainerVisibility = () => {
     if (container3D1.clientWidth === 0 || container3D1.clientHeight === 0) {
-        setTimeout(checkContainerVisibility, 100); // Retry after a short delay
+        setTimeout(checkContainerVisibility, 100);
         return;
     }
-    renderer.setSize(container3D1.clientWidth, container3D1.clientHeight);
-    camera.aspect = container3D1.clientWidth / container3D1.clientHeight;
-    camera.updateProjectionMatrix();
+    updateRendererSize();
+    renderer.render(scene, camera);
 };
+checkContainerVisibility();
 
-// Create the renderer
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-container3D1.appendChild(renderer.domElement);
-checkContainerVisibility(); // Ensure the correct size is applied
-
-// Set up the camera position
-camera.position.z = 25;
-
-// Set up lights
+// Lights
 const topLight = new THREE.DirectionalLight(0xffffff, 1);
 topLight.position.set(500, 500, 500);
 scene.add(topLight);
@@ -124,37 +138,40 @@ scene.add(topLight);
 const ambientLight = new THREE.AmbientLight(0x333333, 5);
 scene.add(ambientLight);
 
-// Load the 3D model
+// Load 3D Model
 const loader = new GLTFLoader();
 let object;
 loader.load(
     'models/3js/scene.gltf',
     function (gltf) {
         object = gltf.scene;
-        object.scale.set(0.7, 0.7, 0.7);
-        scene.add(object);
 
-        renderer.render(scene, camera); // Force an initial render
-        animate(); // Start animation loop
+        // Scale the drone up
+        object.scale.set(0.3, 0.3, 0.3);  // Increase size (adjustable)
+
+        // Adjust position if needed
+        object.position.set(0, 2, 0); // Move it up
+
+        scene.add(object);
     },
     undefined,
     function (error) {
-        console.error(error);
+        console.error("Error loading model:", error);
     }
 );
 
-// Add orbit controls
+// Orbit Controls
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableZoom = false;
 
-// Set up raycasting
+// Raycasting for mouse interaction
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 // Mouse move event listener
 window.addEventListener('mousemove', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
     if (object) {
         raycaster.setFromCamera(mouse, camera);
@@ -166,25 +183,8 @@ window.addEventListener('mousemove', (event) => {
     }
 });
 
-// Resize event listener
-window.addEventListener("resize", function () {
-    const width = container3D1.clientWidth;
-    const height = container3D1.clientHeight;
-
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-    renderer.setSize(width, height);
-});
-
-// Force resize when the page regains focus
-document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) {
-        renderer.setSize(container3D1.clientWidth, container3D1.clientHeight);
-        camera.aspect = container3D1.clientWidth / container3D1.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.render(scene, camera);
-    }
-});
+// Handle window resize
+window.addEventListener("resize", updateRendererSize);
 
 // Animation loop
 function animate() {
@@ -192,6 +192,4 @@ function animate() {
     controls.update();
     renderer.render(scene, camera);
 }
-
-// Force a resize on load
-window.dispatchEvent(new Event("resize"));
+animate();
