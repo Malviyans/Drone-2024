@@ -9,6 +9,7 @@
     
     
 }
+
 body{
     min-height: 100vh; 
     min-height: 100vh;
@@ -664,6 +665,11 @@ section img#mountains_front {
     color: #b3b3b3;
     margin: 0;
 }
+.footer-section {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
 
 /* Media query for responsiveness on smaller screens */
 @media (max-width: 768px) {
@@ -784,3 +790,9 @@ section img#mountains_front {
     display: none;
 }
 
+#loom-companion-mv3, #shadow-host-companion {
+    margin: 0;
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+}
